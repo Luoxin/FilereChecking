@@ -1,10 +1,15 @@
+#对比文件
+
 import hashlib
-import temp_list as FileList
+from temp_list import File
+
 
 class verify(object):
 
+    __doc__ = "计算文件的目录并校验"
+
     def __init__(self):
-        pass
+        self.tempFile = File()
 
     def __verifyMD5(self,path):
         md5file = open(path, 'rb')
@@ -27,19 +32,18 @@ class verify(object):
         print("sha512"+sha512)
         return sha512
 
-    def verifymain(self):
-        pathList=FileList.getFileList()
+    def verifymain(self):#获取校验值并对比
+        pathList=self.tempFile.getFileList()
         re={}
         for i in pathList:
             try:
                 print(i)
-                re[i]=self.__verifySHA512(i)
+                re[i]=self.__verifyMD5(i)
             except:
                 pass
         # print(pathList)
         # print(re)
-        FileList.delFileList()
-        re=FileList.saveVerify(re)
+        re=self.tempFile.saveVerify(re)
         # print(re)
         return re
 

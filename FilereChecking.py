@@ -1,4 +1,4 @@
-import datetime
+﻿import datetime
 import hashlib
 import os
 import shutil
@@ -115,7 +115,7 @@ class FileChecking():
             self.result[i] = []
         for i in self.FileCheckValue.keys():
             self.result[self.FileCheckValue[i]].append(i)
-        print(self.FileCheckValue)
+        #print(self.FileCheckValue)
         print("查重完成，正在生成结果......")
 
     def __saveReault(self,pt):
@@ -139,6 +139,7 @@ class FileChecking():
         self.__getAllMessageDigestAlgorithm()
         self.__contrastCheckValue()
         self.__showReault()
+        self.__removeFile()
 
 
     #相关的信息摘要算法
